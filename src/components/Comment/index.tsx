@@ -5,36 +5,34 @@ import { Avatar } from "../Avatar";
 
 import styles from "./styles.module.css";
 
-export function Comment({ content, onDeleteComment }) {
+interface CommentProps {
+  content: string;
+  onDeleteComment: (comment: string) => void;
+}
+
+export function Comment({ content, onDeleteComment }: CommentProps) {
   const [likeCount, setLikeCount] = useState(0);
 
   const handleDeleteComment = () => {
-    onDeleteComment(content)
-  }
+    onDeleteComment(content);
+  };
 
   const handleLikeComment = () => {
     setLikeCount((state) => {
-      return state + 1
+      return state + 1;
     });
-  }
+  };
 
   return (
     <div className={styles.container}>
-      <Avatar
-        hasBorder={false}
-        src="https://github.com/roherool.png"
-        alt=""
-      />
+      <Avatar hasBorder={false} src="https://github.com/roherool.png" alt="" />
 
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>
           <header>
             <div className={styles.authorAndTime}>
               <strong>Roberto Oliveira</strong>
-              <time
-                title="11 de Maio às 08:13h"
-                dateTime="2022-05-11 08:13:30"
-              >
+              <time title="11 de Maio às 08:13h" dateTime="2022-05-11 08:13:30">
                 Cerca de 1h atrás
               </time>
             </div>
